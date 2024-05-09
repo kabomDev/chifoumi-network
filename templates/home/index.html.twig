@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jeu de Chifoumi{% endblock %}
+
+{% block body %}
+    <div data-controller="game">
+        <h1>Bienvenue sur le Jeu du Chifoumi!</h1>
+        <button data-action="game#createGame">Créer une partie</button>
+        <button data-action="game#joinGame">Rejoindre une partie</button>
+        <div id="form-container"></div>
+    </div>
+{% endblock %}

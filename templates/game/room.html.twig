@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Parties{% endblock %}
+
+{% block body %}
+    <h1>Liste des Parties</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>ID de la partie</th>
+            <th>Joueur 1</th>
+            <th>Joueur 2</th>
+            <th>Créée le</th>
+            <th>Statut</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for game in games %}
+            <tr>
+                <td>{{ game.id }}</td>
+                <td>{{ game.playerOne ? game.playerOne.username : 'En attente...' }}</td>
+                <td>{{ game.playerTwo ? game.playerTwo.username : 'En attente...' }}</td>
+                <td>{{ game.createdAt|date('Y-m-d H:i') }}</td>
+                <td>{{ game.playerTwo ? 'Complète' : 'En attente de joueur' }}</td>
+                <td>
+                    {# <a href="{{ path('specific_game_route', {'id': game.id}) }}">Rejoindre/Visualiser</a> #}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucune partie disponible</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
